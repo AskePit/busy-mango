@@ -1,0 +1,11 @@
+{
+	"id": "busy-mango",
+	"name": "Busy Mango",
+	"version": "1.0.1",
+	"minAppVersion": "1.0.0",
+	"description": "Be busy, be mango",
+	"author": "askepit",
+	"authorUrl": "",
+	"helpUrl": "",
+	"isDesktopOnly": false
+}
