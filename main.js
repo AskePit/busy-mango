@@ -276,6 +276,7 @@ class Project {
     constructor() {
         this.id = null
         this.name = ''
+        this.enabled = false
         this.projectType = null
         this.boards = []
         this.urgency = Priority.NONE
@@ -426,7 +427,9 @@ class ProjectsLibrary {
     }
 
     getAvailableTodos() {
-        return this.projects.flatMap(p => p.getAvailableTodos())
+        return this.projects
+            .filter(p => p.enabled)
+            .flatMap(p => p.getAvailableTodos())
     }
 
     getProjectById(id) {
@@ -534,6 +537,7 @@ class ProjectFileManipulator {
         project.boards = []
 
         project.id = safeToInt(this.frontmatter.id)
+        project.enabled = this.frontmatter.enabled == "true"
         project.urgency = Priority.fromString(this.frontmatter.urgency)
         project.strategy = Priority.fromString(this.frontmatter.strategy)
         project.interest = Priority.fromString(this.frontmatter.interest)
